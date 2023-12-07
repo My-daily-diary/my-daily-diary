@@ -1,9 +1,18 @@
 .wrapper {
-  width: 300px;
-  height: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 20rem;
   background-color: lightblue;
+  border-radius: 10%;
+  padding: 3rem;
+  gap: 1rem;
 }
 
-.red {
-  background-color: red;
+.title {
+  font-size: 3rem;
+}
+
+.date, .preview {
+  color: gray;
 }
