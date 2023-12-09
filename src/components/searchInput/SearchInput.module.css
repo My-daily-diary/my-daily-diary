@@ -1,0 +1,17 @@
+.input {
+  width: 40%;
+  border: 0.1rem solid gray;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  color: gray;
+  padding: 1.8rem 1.5rem;
+  transition: border-color 0.2s ease-in-out;
+
+  &::placeholder {
+    color: gray;
+  }
+
+  &:focus {
+    border-color: blue;
+  }
+}
