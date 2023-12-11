@@ -1,10 +1,25 @@
+import { useSearchParams } from "react-router-dom";
 import styles from "./SearchInput.module.css";
+import { useState } from "react";
 
-function SearchInput({ value, onChange }) {
+function SearchInput() {
+  const [value, setValue] = useState("");
+  const [q, setQ] = useSearchParams();
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setQ({ title: value });
+  };
+
   return (
-    <>
-      <input className={styles.input} value={value} onChange={onChange} />
-    </>
+    <form onSubmit={handleSubmit}>
+      <input className={styles.input} value={value} onChange={handleChange} />
+      <button>검색</button>
+    </form>
   );
 }
 

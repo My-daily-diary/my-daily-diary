@@ -1,20 +1,25 @@
 import "@/styles/reset.css";
 import Card from "@/components/card/Card";
 import items from "../mock.json";
-import Modal from "./components/modal/modal";
 import SearchInput from "./components/searchInput/SearchInput";
 import { useState } from "react";
+import {
+  BrowserRouter,
+  Router,
+  RouterProvider,
+  useSearchParams,
+} from "react-router-dom";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const onChangeInput = (e) => {
-    setInputValue(e.target.value);
-  };
+  const [q, setQ] = useSearchParams();
+  const keyword = q.get("title") ?? "";
+  console.log(keyword);
+
   return (
     <>
-      <SearchInput value={inputValue} onChange={onChangeInput} />
+      <SearchInput />
       {items
-        .filter((item) => item.title.includes(inputValue))
+        .filter((item) => item.title.includes(keyword))
         .map((item) => (
           <Card
             key={item.id}
