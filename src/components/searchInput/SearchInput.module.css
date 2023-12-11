@@ -1,3 +1,13 @@
+.form {
+  position: relative;
+
+  .close_button {
+    position: absolute;
+    top: 2.4rem;
+    right: 32rem;
+  }
+}
+
 .input {
   width: 40%;
   border: 0.1rem solid gray;

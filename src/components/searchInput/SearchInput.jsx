@@ -15,9 +15,21 @@ function SearchInput() {
     setQ({ title: value });
   };
 
+  const handleRemoveInput = () => {
+    setValue("");
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input className={styles.input} value={value} onChange={handleChange} />
+
+      {value && (
+        <img
+          onClick={handleRemoveInput}
+          className={styles.close_button}
+          src="src/assets/close.svg"
+        />
+      )}
       <button>검색</button>
     </form>
   );
