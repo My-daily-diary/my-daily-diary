@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 import styles from "./SearchInput.module.css";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
-function SearchInput() {
+export default forwardRef(function SearchInput(props, ref) {
   const [value, setValue] = useState("");
   const [q, setQ] = useSearchParams();
 
@@ -21,7 +21,12 @@ function SearchInput() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <input className={styles.input} value={value} onChange={handleChange} />
+      <input
+        ref={ref}
+        className={styles.input}
+        value={value}
+        onChange={handleChange}
+      />
 
       {value && (
         <img
@@ -33,6 +38,4 @@ function SearchInput() {
       <button>검색</button>
     </form>
   );
-}
-
-export default SearchInput;
+});
