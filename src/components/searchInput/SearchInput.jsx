@@ -1,10 +1,12 @@
 import { useSearchParams } from "react-router-dom";
 import styles from "./SearchInput.module.css";
 import { forwardRef, useState } from "react";
+import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 
 export default forwardRef(function SearchInput(props, ref) {
   const [value, setValue] = useState("");
-  const [q, setQ] = useSearchParams();
+  const [_, setQ] = useSearchParams();
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -19,11 +21,14 @@ export default forwardRef(function SearchInput(props, ref) {
     setValue("");
   };
 
+  console.log(styles.classList);
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
       <input
-        ref={ref}
-        className={styles.input}
+        className={cx("input", {
+          [`${props.classList}`]: props.classList ? true : false,
+        })}
         value={value}
         onChange={handleChange}
       />

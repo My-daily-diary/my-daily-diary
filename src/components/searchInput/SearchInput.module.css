@@ -25,3 +25,8 @@
     border-color: blue;
   }
 }
+
+.switch_position {
+  position: fixed;
+  bottom: 0;
+}
